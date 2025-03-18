@@ -1,6 +1,6 @@
 namespace Program3;
 
-public class GasContainer : Container
+public class GasContainer : Container, IHazardNotifier
 { 
     public double Pressure { get; set; }
     
@@ -9,5 +9,14 @@ public class GasContainer : Container
         SerialNumber = "KON-G-"+SerialNumberCounter++;
         Pressure = pressure;
     }
-    
+
+    public override void UnloadCargo()
+    {
+        CargoMass = CargoMass * 0.05;
+    }
+
+    public void NotifyHazard()
+    {
+        Console.WriteLine($"Container {SerialNumber} is notifying hazard");
+    }
 }
