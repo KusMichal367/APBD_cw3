@@ -20,7 +20,7 @@ public abstract class Container(int cargoMass, int height, int containerMass, in
     {
         if (mass > MaxCargoMass)
         {
-            throw new OverfillException("Provided mass must be less or equal to MaxCargoMass "+MaxCargoMass+ " tons");
+            throw new OverfillException(MaxCargoMass);
         }
         CargoMass += mass;
     }

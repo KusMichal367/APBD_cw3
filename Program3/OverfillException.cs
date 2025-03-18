@@ -1,3 +1,3 @@
 namespace Program3;
 
-public class OverfillException(string message) : Exception(message);
+public class OverfillException(double maxCargoMass) : Exception("Provided mass must be less or equal to "+maxCargoMass+" tons");

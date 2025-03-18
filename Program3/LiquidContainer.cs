@@ -25,14 +25,18 @@ public class LiquidContainer : Container, IHazardNotifier
         if (mass>SafeMass)
         {
             NotifyHazard();
-            throw new OverfillException("Provided mass is over safety limit");
         }
-        
+
+        if (mass > MaxCargoMass)
+        {
+            throw new OverfillException(MaxCargoMass);
+        }
+
         CargoMass += mass;
     }
 
     public void NotifyHazard()
     {
-        Console.WriteLine($"Container {SerialNumber} is notifying hazard");
+        Console.WriteLine($"Container {SerialNumber} is trying to fill over safety limit");
     }
 }
