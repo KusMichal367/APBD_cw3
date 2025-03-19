@@ -25,9 +25,10 @@ public class LiquidContainer : Container, IHazardNotifier
         if (mass>safeMass)
         {
             NotifyHazard();
+            return;
         }
 
-        if (mass > MaxCargoMass)
+        if (CargoMassKg + mass > MaxCargoMass)
         {
             throw new OverfillException(MaxCargoMass);
         }

@@ -20,7 +20,7 @@ public class CoolerContainer : Container
             throw new Exception($"Temperature {safeTemperature} is below safe temperature for {ProductType} \t {Temperature} < {safeTemperature}");
         }
 
-        if (mass > MaxCargoMass)
+        if (CargoMassKg + mass > MaxCargoMass)
         {
             throw new OverfillException(MaxCargoMass);
         }
