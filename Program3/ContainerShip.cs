@@ -90,4 +90,19 @@ public class ContainerShip
         
         return totalMass;
     }
+
+    public void SwapContainers(Container notOnShip, String serialNumberOnShip)
+    {
+        try
+        {
+            RemoveContainer(serialNumberOnShip);
+            LoadContainer(notOnShip);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Problem with swapping containers : {ex.Message}");
+            throw;
+        }
+    }
+    
 }
