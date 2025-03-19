@@ -12,17 +12,17 @@ public class LiquidContainer : Container, IHazardNotifier
 
     public override void LoadCargo(double mass)
     {
-        double SafeMass;
+        double safeMass;
         if (IsDangerous)
         {
-            SafeMass = MaxCargoMass * 0.5;
+            safeMass = MaxCargoMass * 0.5;
         }
         else
         {
-            SafeMass = MaxCargoMass * 0.9;
+            safeMass = MaxCargoMass * 0.9;
         }
 
-        if (mass>SafeMass)
+        if (mass>safeMass)
         {
             NotifyHazard();
         }
