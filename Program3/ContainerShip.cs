@@ -13,7 +13,7 @@ public class ContainerShip(int maxSpeed, int maxContainerCapacity, double maxCon
         if (container != null)
         {
 
-            if (Containers.Count > MaxContainerWeight)
+            if (Containers.Count >= MaxContainerCapacity)
             {
                 throw new Exception("Too many containers");
             }
