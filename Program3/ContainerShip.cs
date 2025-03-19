@@ -43,7 +43,7 @@ public class ContainerShip
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Nie udało się dodać kontenera {container.SerialNumber}: {ex.Message}");
+                Console.WriteLine($"Problem with adding container {container.SerialNumber}: {ex.Message}");
             }
         }
     }
@@ -52,14 +52,18 @@ public class ContainerShip
     {
         var container = Containers.FirstOrDefault(c => c.SerialNumber == serialNumber);
         if (container != null)
+        {
             Containers.Remove(container);
+            Console.WriteLine($"Removed container {serialNumber} from {ShipName}");  
+        }
+        
         else
             throw new Exception($"No container found for serial number {serialNumber}");
     }
 
     public override string ToString()
     {
-        String output = $"{ShipName}\n\tMax Speed: {MaxSpeed} knots\n\tMax Container Capacity: {MaxContainerCapacity} containers\n\tMax Container Weight: {MaxContainerWeightTons} tons\n\t";
+        String output = $"{ShipName}\n\tMax Speed: {MaxSpeed} knots\n\tMax Container Capacity: {MaxContainerCapacity} containers\n\tMax Container Weight: {MaxContainerWeightTons} tons\n\tTotal Cargo Weight {GetTotalMass()/1000} tons\n\t";
         output += "Containers on board:\n";
 
         if (Containers.Count > 0)
@@ -74,5 +78,16 @@ public class ContainerShip
             output += "\n\tNo containers";
         }
         return output;
+    }
+
+    public double GetTotalMass()
+    {
+        double totalMass = 0;
+        foreach (var container in Containers)
+        {
+            totalMass += container.ContainerMassKg + container.CargoMassKg;
+        }
+        
+        return totalMass;
     }
 }
