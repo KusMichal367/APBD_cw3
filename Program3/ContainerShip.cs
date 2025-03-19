@@ -30,6 +30,7 @@ public class ContainerShip
             throw new Exception("Weight exceeds max capacity");
         }
         Containers.Add(container);
+        Console.WriteLine($"Loaded container {container.SerialNumber} to {ShipName}");
     }
 
     public void RemoveContainer(string serialNumber)
@@ -44,7 +45,7 @@ public class ContainerShip
     public override string ToString()
     {
         String output = $"{ShipName}\n\tMax Speed: {MaxSpeed} knots\n\tMax Container Capacity: {MaxContainerCapacity} containers\n\tMax Container Weight: {MaxContainerWeightTons} tons\n\t";
-        output += "Containers on board:";
+        output += "Containers on board:\n";
 
         if (Containers.Count > 0)
         {
