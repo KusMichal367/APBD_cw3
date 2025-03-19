@@ -52,12 +52,21 @@ public class ContainerShip()
 
     public override string ToString()
     {
-        String output = $"\n\tMax Speed: {MaxSpeed}+\n\tMax Container Capacity: {MaxContainerCapacity}+\n\tMax Container Weight: {MaxContainerWeight}";
+        String output = $"{ShipName}\n\tMax Speed: {MaxSpeed}\n\tMax Container Capacity: {MaxContainerCapacity}\n\tMax Container Weight: {MaxContainerWeight}\n\t";
         output += "Containers:";
-        foreach (var container in Containers)
+
+        if (Containers.Count > 0)
         {
-            output += $"\n\t{container.ToString()}";
+            foreach (var container in Containers)
+            {
+                output += $"\n\t{container.ToString()}";
+            } 
         }
+        else
+        {
+            output += "\n\tNo containers";
+        }
+        
         
         return output;
     }
