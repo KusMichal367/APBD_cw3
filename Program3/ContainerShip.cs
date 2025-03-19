@@ -31,7 +31,7 @@ public class ContainerShip()
 
             var currentWeight = Containers.Sum(con => con.ContainerMassKg + con.CargoMassKg);
 
-            if (currentWeight + container.ContainerMassKg + container.CargoMassKg > MaxContainerWeightTons)
+            if (currentWeight + container.ContainerMassKg + container.CargoMassKg > MaxContainerWeightTons*1000)
             {
                 throw new Exception("Weight exceeds max capacity");
             }

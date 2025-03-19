@@ -12,7 +12,7 @@ public class GasContainer : Container, IHazardNotifier
 
     public override void UnloadCargo()
     {
-        CargoMassKg = CargoMassKg * 0.05;
+        CargoMassKg *= 0.05;
     }
 
     public void NotifyHazard()
