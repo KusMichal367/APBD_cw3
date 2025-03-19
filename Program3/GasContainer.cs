@@ -23,7 +23,7 @@ public class GasContainer : Container, IHazardNotifier
     public override string ToString()
     {
         return $"Container {SerialNumber} \n \t Cargo Mass: {CargoMassKg} kg \n \t Max Cargo Mass: {MaxCargoMass} kg" +
-               $"\n \t Height: {HeightCm} cm \n \t Depth: {DepthCm} cm \n \t container mass: {ContainerMassKg} kg\n\t Total Mass: {ContainerMassKg+CargoMassKg}kg \n" +
-               $"\n \t Pressure: {Pressure} atm";
+               $"\n \t Height: {HeightCm} cm \n \t Depth: {DepthCm} cm \n \t container mass: {ContainerMassKg} kg\n\t Total Mass: {ContainerMassKg+CargoMassKg}kg" +
+               $"\n \t Pressure: {Pressure} atm \n";
     }
 }
