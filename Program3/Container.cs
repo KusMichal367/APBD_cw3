@@ -26,10 +26,11 @@ public abstract class Container
 
     public virtual void LoadCargo(double mass)
     {
-        if (mass > MaxCargoMass)
+        if (CargoMassKg + mass > MaxCargoMass)
         {
             throw new OverfillException(MaxCargoMass);
         }
+
         CargoMassKg += mass;
     }
 
