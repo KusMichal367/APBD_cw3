@@ -7,7 +7,7 @@ public abstract class Container(int cargoMass, int height, int containerMass, in
     public int ContainerMass { get; set; } = containerMass;
     public int Depth { get; set; } = depth;
 
-    public required string SerialNumber { get; set; }
+    public string SerialNumber { get; set; }
     protected static int SerialNumberCounter = 1;
     public double MaxCargoMass { get; set; } = maxCargoMass;
 
@@ -23,5 +23,11 @@ public abstract class Container(int cargoMass, int height, int containerMass, in
             throw new OverfillException(MaxCargoMass);
         }
         CargoMass += mass;
+    }
+
+    public override string ToString()
+    {
+        return $"Container {SerialNumber} \n \t Cargo Mass: {cargoMass} \n \t Max Cargo Mass: {maxCargoMass}" +
+               $"\n \t Height: {height} \n \t Depth: {depth} \n \t container mass: {CargoMass}";
     }
 }

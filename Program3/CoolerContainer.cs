@@ -39,4 +39,11 @@ public class CoolerContainer : Container
             throw new Exception($"Unknown temperature type: {productType}");
         }
     }
+    
+    public override string ToString()
+    {
+        return $"Container {SerialNumber} \n \t Cargo Mass: {CargoMass} \n \t Max Cargo Mass: {MaxCargoMass}" +
+               $"\n \t Height: {Height} \n \t Depth: {Depth} \n \t container mass: {CargoMass}" +
+               $"\n \t Product: {ProductType} \n \t Temperature: {Temperature}";
+    }
 }

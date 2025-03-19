@@ -19,4 +19,11 @@ public class GasContainer : Container, IHazardNotifier
     {
         Console.WriteLine($"Container {SerialNumber} is notifying hazard");
     }
+
+    public override string ToString()
+    {
+        return $"Container {SerialNumber} \n \t Cargo Mass: {CargoMass} \n \t Max Cargo Mass: {MaxCargoMass}" +
+               $"\n \t Height: {Height} \n \t Depth: {Depth} \n \t container mass: {CargoMass}" +
+               $"\n \t Pressure: {Pressure}";
+    }
 }

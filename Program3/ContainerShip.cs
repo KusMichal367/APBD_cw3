@@ -38,4 +38,16 @@ public class ContainerShip(int maxSpeed, int maxContainerCapacity, double maxCon
         var container = Containers.FirstOrDefault(c => c.SerialNumber == serialNumber);
         if (container != null) Containers.Remove(container);
     }
+
+    public override string ToString()
+    {
+        String output = $"\n\tMax Speed: {MaxSpeed}+\n\tMax Container Capacity: {MaxContainerCapacity}+\n\tMax Container Weight: {MaxContainerWeight}";
+        output += "Containers:";
+        foreach (var container in Containers)
+        {
+            output += $"\n\t{container.ToString()}";
+        }
+        
+        return output;
+    }
 }
