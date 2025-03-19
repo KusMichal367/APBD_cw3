@@ -100,9 +100,31 @@ public class ContainerShip
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Problem with swapping containers : {ex.Message}");
+            Console.WriteLine($"Problem with swapping containers {notOnShip.SerialNumber} with {serialNumberOnShip} : {ex.Message}");
             throw;
         }
     }
-    
+
+    public static void TransportToAnotherShip(ContainerShip firstShip, ContainerShip secondShip, string serialNumberOnShip)
+    {
+        try
+        {
+            var container = firstShip.Containers.FirstOrDefault(c => c.SerialNumber == serialNumberOnShip);
+            if (container == null)
+            {
+                Console.WriteLine($"Container {serialNumberOnShip} was not found on ship {firstShip.ShipName}");
+                return;
+            }
+        
+            firstShip.RemoveContainer(serialNumberOnShip);
+            secondShip.LoadContainer(container);
+        
+            Console.WriteLine($"Container {serialNumberOnShip} was successfully transported from ship {firstShip.ShipName} to ship {secondShip.ShipName}.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Problem transporting container {serialNumberOnShip} from ship {firstShip.ShipName} to ship {secondShip.ShipName}: {ex.Message}");
+        }
+    }
+
 }
