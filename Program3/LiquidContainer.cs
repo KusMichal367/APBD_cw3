@@ -25,7 +25,6 @@ public class LiquidContainer : Container, IHazardNotifier
         if (mass>safeMass)
         {
             NotifyHazard();
-            return;
         }
 
         if (CargoMassKg + mass > MaxCargoMass)

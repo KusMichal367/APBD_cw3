@@ -52,7 +52,7 @@ public class ContainerShip()
 
     public override string ToString()
     {
-        String output = $"{ShipName}\n\tMax Speed: {MaxSpeed} knots\n\tMax Container Capacity: {MaxContainerCapacity} containers\n\tMax Container Weight: {MaxContainerWeight} tons\n\t";
+        String output = $"{ShipName}\n\tMax Speed: {MaxSpeed} knots\n\tMax Container Capacity: {MaxContainerCapacity} containers\n\tMax Container Weight: {MaxContainerWeight} kilograms\n\t";
         output += "Containers on board:";
 
         if (Containers.Count > 0)
