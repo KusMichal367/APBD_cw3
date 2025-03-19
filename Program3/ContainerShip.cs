@@ -32,6 +32,21 @@ public class ContainerShip
         Containers.Add(container);
         Console.WriteLine($"Loaded container {container.SerialNumber} to {ShipName}");
     }
+    
+    public void LoadContainer(List<Container> containerList)
+    {
+        foreach (var container in containerList)
+        {
+            try
+            {
+                LoadContainer(container);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Nie udało się dodać kontenera {container.SerialNumber}: {ex.Message}");
+            }
+        }
+    }
 
     public void RemoveContainer(string serialNumber)
     {
@@ -58,8 +73,6 @@ public class ContainerShip
         {
             output += "\n\tNo containers";
         }
-        
-        
         return output;
     }
 }
