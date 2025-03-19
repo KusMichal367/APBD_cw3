@@ -13,7 +13,7 @@ public abstract class Container
 
     protected Container(double cargoMass, int height, int containerMass, int depth, double maxCargoMass)
     {
-        if (CargoMass>MaxCargoMass)
+        if (cargoMass>maxCargoMass)
         {
             throw new OverflowException("Cargo mass cannot be greater than max cargo mass");
         }
