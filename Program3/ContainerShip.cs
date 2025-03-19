@@ -1,6 +1,6 @@
 namespace Program3;
 
-public class ContainerShip()
+public class ContainerShip
 {
     public List<Container> Containers { get; set; } = [];
     public int MaxSpeed  { get; set; }
@@ -10,44 +10,35 @@ public class ContainerShip()
     public string ShipName { get; set; }
     public static int ShipNameCounter = 1;
 
-    public ContainerShip(int maxSpeed, int maxContainerCapacity, double maxContainerWeightTons) : this()
+    public ContainerShip(int maxSpeed, int maxContainerCapacity, double maxContainerWeightTons)
     {
         MaxSpeed = maxSpeed;
         MaxContainerCapacity = maxContainerCapacity;
         MaxContainerWeightTons = maxContainerWeightTons;
-        ShipName = $"Ship{ShipNameCounter++}";
+        ShipName = $"Ship-{ShipNameCounter++}";
     }
 
-    public void LoadContainer(string serialNumber)
-    {
-        var container = Containers.FirstOrDefault(c => c.SerialNumber == serialNumber);
-        if (container != null)
-        {
-
-            if (Containers.Count >= MaxContainerCapacity)
-            {
-                throw new Exception("Too many containers");
-            }
-
-            var currentWeight = Containers.Sum(con => con.ContainerMassKg + con.CargoMassKg);
-
-            if (currentWeight + container.ContainerMassKg + container.CargoMassKg > MaxContainerWeightTons*1000)
-            {
-                throw new Exception("Weight exceeds max capacity");
-            }
-
-            Containers.Add(container);
+    public void LoadContainer(Container container)
+    { 
+        if (Containers.Count >= MaxContainerCapacity)
+        { 
+            throw new Exception("Too many containers");
         }
-        else
-        {
-            throw new Exception("No container found with this serial number");
+        var currentWeight = Containers.Sum(con => con.ContainerMassKg + con.CargoMassKg);
+        if (currentWeight + container.ContainerMassKg + container.CargoMassKg > MaxContainerWeightTons*1000) 
+        { 
+            throw new Exception("Weight exceeds max capacity");
         }
+        Containers.Add(container);
     }
 
     public void RemoveContainer(string serialNumber)
     {
         var container = Containers.FirstOrDefault(c => c.SerialNumber == serialNumber);
-        if (container != null) Containers.Remove(container);
+        if (container != null)
+            Containers.Remove(container);
+        else
+            throw new Exception($"No container found for serial number {serialNumber}");
     }
 
     public override string ToString()
