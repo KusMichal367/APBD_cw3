@@ -29,9 +29,9 @@ public class ContainerShip()
                 throw new Exception("Too many containers");
             }
 
-            var currentWeight = Containers.Sum(con => con.ContainerMass + con.CargoMass);
+            var currentWeight = Containers.Sum(con => con.ContainerMassKg + con.CargoMassKg);
 
-            if (currentWeight + container.ContainerMass + container.CargoMass > MaxContainerWeight)
+            if (currentWeight + container.ContainerMassKg + container.CargoMassKg > MaxContainerWeight)
             {
                 throw new Exception("Weight exceeds max capacity");
             }
