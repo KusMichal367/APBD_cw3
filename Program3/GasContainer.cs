@@ -26,4 +26,11 @@ public class GasContainer : Container, IHazardNotifier
                $"\n \t Height: {HeightCm} cm \n \t Depth: {DepthCm} cm \n \t container mass: {ContainerMassKg} kg\n\t Total Mass: {ContainerMassKg+CargoMassKg}kg" +
                $"\n \t Pressure: {Pressure} atm \n";
     }
+    
+    public override string ContainerInfo()
+    {
+        return $"Container {SerialNumber} (Cargo Mass: {CargoMassKg} kg Max Cargo Mass: {MaxCargoMass} kg" +
+               $" Height: {HeightCm} cm Depth: {DepthCm} cm container mass: {ContainerMassKg} kg Total Mass: {ContainerMassKg+CargoMassKg}kg" +
+               $" Pressure: {Pressure} atm) \n";
+    }
 }

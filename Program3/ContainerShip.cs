@@ -10,12 +10,12 @@ public class ContainerShip
     public string ShipName { get; set; }
     public static int ShipNameCounter = 1;
 
-    public ContainerShip(int maxSpeed, int maxContainerCapacity, double maxContainerWeightTons)
+    public ContainerShip(string name,int maxSpeed, int maxContainerCapacity, double maxContainerWeightTons)
     {
         MaxSpeed = maxSpeed;
         MaxContainerCapacity = maxContainerCapacity;
         MaxContainerWeightTons = maxContainerWeightTons;
-        ShipName = $"Ship-{ShipNameCounter++}";
+        ShipName = $"Statek {name}-{ShipNameCounter++}";
     }
 
     public void LoadContainer(Container container)
@@ -64,6 +64,25 @@ public class ContainerShip
     public override string ToString()
     {
         String output = $"{ShipName}\n\tMax Speed: {MaxSpeed} knots\n\tMax Container Capacity: {MaxContainerCapacity} containers\n\tMax Container Weight: {MaxContainerWeightTons} tons\n\tTotal Cargo Weight {GetTotalMass()/1000} tons\n\t";
+        output += "Containers on board:\n";
+
+        if (Containers.Count > 0)
+        {
+            foreach (var container in Containers)
+            {
+                output += $"\n\t{container.ToString()}";
+            } 
+        }
+        else
+        {
+            output += "\n\tNo containers";
+        }
+        return output;
+    }
+    
+    public string ShipInfo()
+    {
+        String output = $"{ShipName} (Max Speed: {MaxSpeed} knots  Max Container Capacity: {MaxContainerCapacity} containers Max Container Weight: {MaxContainerWeightTons} tons Total Cargo Weight {GetTotalMass()/1000} tons\n\t";
         output += "Containers on board:\n";
 
         if (Containers.Count > 0)
