@@ -12,6 +12,12 @@ public class LiquidContainer : Container, IHazardNotifier
 
     public override void LoadCargo(double mass)
     {
+        
+        if (mass <= 0)
+        {
+            throw new Exception("Invalid mass");
+        }
+
         double safeMass;
         if (IsDangerous)
         {
@@ -47,10 +53,4 @@ public class LiquidContainer : Container, IHazardNotifier
                $"\n \t Dangerous: {IsDangerous} \n";
     }
     
-    public override string ContainerInfo()
-    {
-        return $"Container {SerialNumber} (Cargo Mass: {CargoMassKg} kg Max Cargo Mass: {MaxCargoMass} kg" +
-               $" Height: {HeightCm} cm Depth: {DepthCm} cm container mass: {ContainerMassKg} kg Total Mass: {ContainerMassKg+CargoMassKg}kg" +
-               $"Dangerous: {IsDangerous}) \n";
-    }
 }

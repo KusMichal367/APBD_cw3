@@ -26,6 +26,11 @@ public abstract class Container
 
     public virtual void LoadCargo(double mass)
     {
+        if (mass <= 0)
+        {
+            throw new Exception("Invalid mass");
+        }
+
         if (CargoMassKg + mass > MaxCargoMass)
         {
             throw new OverfillException(MaxCargoMass);
@@ -40,8 +45,9 @@ public abstract class Container
                $"\n \t Height: {HeightCm} cm \n \t Depth: {DepthCm} cm\n \t container mass: {ContainerMassKg}kg \n\t Total Mass: {ContainerMassKg+CargoMassKg}kg\n";
     }
 
-    public virtual string ContainerInfo()
+    public string ContainerInfo()
     {
-        return "Container info";
+        return $"Kontener {SerialNumber} (Cargo Mass= {CargoMassKg} kg,  Max Cargo Mass= {MaxCargoMass} kg," +
+               $" Height= {HeightCm} cm,  Depth= {DepthCm} cm,  Container mass= {ContainerMassKg} kg)";
     }
 }

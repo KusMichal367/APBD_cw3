@@ -14,6 +14,11 @@ public class CoolerContainer : Container
 
     public override void LoadCargo(double mass)
     {
+        if (mass <= 0)
+        {
+            throw new Exception("Invalid mass");
+        }
+
         double safeTemperature = GetSafeTemperature(ProductType);
         if (Temperature < safeTemperature)
         {
@@ -46,11 +51,5 @@ public class CoolerContainer : Container
                $"\n \t Height: {HeightCm} cm \n \t Depth: {DepthCm} cm \n \t container mass: {ContainerMassKg} kg\n\t Total Mass: {ContainerMassKg+CargoMassKg}kg" +
                $"\n \t Product: {ProductType} \n \t Temperature: {Temperature}\u2103 \n";
     }
-
-    public override string ContainerInfo()
-    {
-        return $"Container {SerialNumber} (Cargo Mass: {CargoMassKg} kg Max Cargo Mass: {MaxCargoMass} kg" +
-            $" Height: {HeightCm} cm Depth: {DepthCm} cm container mass: {ContainerMassKg} kg Total Mass: {ContainerMassKg+CargoMassKg}kg" +
-            $"Product: {ProductType} Temperature: {Temperature}\u2103 ) \n";
-    }
+    
 }

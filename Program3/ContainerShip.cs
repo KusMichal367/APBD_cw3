@@ -15,7 +15,7 @@ public class ContainerShip
         MaxSpeed = maxSpeed;
         MaxContainerCapacity = maxContainerCapacity;
         MaxContainerWeightTons = maxContainerWeightTons;
-        ShipName = $"Statek {name}-{ShipNameCounter++}";
+        ShipName = $"Statek-{name}-{ShipNameCounter++}";
     }
 
     public void LoadContainer(Container container)
@@ -70,7 +70,7 @@ public class ContainerShip
         {
             foreach (var container in Containers)
             {
-                output += $"\n\t{container.ToString()}";
+                output += $"\n\t{container.ContainerInfo()}";
             } 
         }
         else
@@ -82,20 +82,14 @@ public class ContainerShip
     
     public string ShipInfo()
     {
-        String output = $"{ShipName} (Max Speed: {MaxSpeed} knots  Max Container Capacity: {MaxContainerCapacity} containers Max Container Weight: {MaxContainerWeightTons} tons Total Cargo Weight {GetTotalMass()/1000} tons\n\t";
-        output += "Containers on board:\n";
+        string output = $"{ShipName} (Max Speed= {MaxSpeed} knots, Max Container Capacity= {MaxContainerCapacity} containers, Max Container Weight= {MaxContainerWeightTons} tons, Total Cargo Weight= {GetTotalMass()/1000} tons)";
 
         if (Containers.Count > 0)
-        {
             foreach (var container in Containers)
-            {
                 output += $"\n\t{container.ToString()}";
-            } 
-        }
         else
-        {
             output += "\n\tNo containers";
-        }
+        
         return output;
     }
 
